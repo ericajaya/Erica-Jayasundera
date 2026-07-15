@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erica Jayasundera — AI Deployment Engineer &amp; Adversarial ML Researcher</title>
+<meta name="description" content="Erica Jayasundera — AI deployment engineer, adversarial ML researcher, and startup co-founder building and red-teaming LLM agent systems. Portfolio, skills, and experience.">
+<style>
+  :root{
+    --bg:#faf7f2;
+    --bg-alt:#f2ece2;
+    --card:#ffffff;
+    --ink:#2b2521;
+    --ink-soft:#6b625a;
+    --line:#e6ddd0;
+    --accent:#b5622f;      /* warm terracotta */
+    --accent-soft:#e8a06a;
+    --accent-deep:#8a4620;
+    --gold:#c99a3f;
+    --shadow:0 10px 40px rgba(90,60,30,.10);
+    --radius:18px;
+    --maxw:1080px;
+    --font:'Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    --serif:Georgia,'Times New Roman',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  section{padding:96px 24px;position:relative}
+  .wrap{max-width:var(--maxw);margin:0 auto}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;
+    font-weight:700;color:var(--accent);margin-bottom:14px;
+  }
+  h2.section-title{
+    font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);
+    font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.15;
+  }
+  .section-sub{color:var(--ink-soft);max-width:560px;margin-bottom:48px;font-size:1.02rem}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 30px;transition:all .35s ease;
+    background:transparent;
+  }
+  header.nav.scrolled{
+    background:rgba(250,247,242,.88);backdrop-filter:blur(12px);
+    box-shadow:0 2px 20px rgba(90,60,30,.07);padding:12px 30px;
+  }
+  .logo{font-family:var(--serif);font-weight:700;font-size:1.25rem;letter-spacing:.01em}
+  .logo span{color:var(--accent)}
+  nav.links{display:flex;gap:30px;align-items:center}
+  nav.links a{font-size:.92rem;font-weight:500;color:var(--ink-soft);position:relative;transition:color .2s}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--accent);transition:width .25s}
+  nav.links a:hover{color:var(--ink)}
+  nav.links a:hover::after{width:100%}
+  .nav-cta{background:var(--accent);color:#fff!important;padding:9px 20px;border-radius:30px;font-weight:600!important}
+  .nav-cta:hover{background:var(--accent-deep)}
+  .nav-cta::after{display:none}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+  .burger span{width:26px;height:2.5px;background:var(--ink);border-radius:2px;transition:.3s}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;display:flex;align-items:center;
+    background:
+      radial-gradient(circle at 85% 20%,rgba(232,160,106,.28),transparent 45%),
+      radial-gradient(circle at 10% 90%,rgba(201,154,63,.20),transparent 40%),
+      var(--bg);
+    padding-top:120px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:50px;align-items:center;width:100%}
+  .hero .avail{
+    display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);
+    padding:6px 14px;border-radius:30px;font-size:.8rem;color:var(--ink-soft);margin-bottom:24px;box-shadow:var(--shadow)
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:#3fae5a;box-shadow:0 0 0 0 rgba(63,174,90,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,174,90,.5)}70%{box-shadow:0 0 0 8px rgba(63,174,90,0)}100%{box-shadow:0 0 0 0 rgba(63,174,90,0)}}
+  .hero h1{font-family:var(--serif);font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.05;font-weight:700;margin-bottom:20px}
+  .hero h1 .accent{color:var(--accent);font-style:italic}
+  .hero p.lead{font-size:1.18rem;color:var(--ink-soft);max-width:520px;margin-bottom:34px}
+  .btn-row{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{padding:13px 28px;border-radius:32px;font-weight:600;font-size:.98rem;transition:.25s;cursor:pointer;border:2px solid transparent;display:inline-flex;align-items:center;gap:8px}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:#fff}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  .portrait{
+    position:relative;width:100%;aspect-ratio:1/1.08;border-radius:24px;
+    background:linear-gradient(145deg,var(--accent-soft),var(--accent));
+    box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;overflow:hidden;
+  }
+  .portrait .initials{font-family:var(--serif);font-size:6rem;color:rgba(255,255,255,.92);font-weight:700}
+  .portrait::before{content:"";position:absolute;inset:0;background:
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 50%);}
+  .float-badge{
+    position:absolute;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:var(--shadow);
+    font-size:.82rem;font-weight:600;display:flex;flex-direction:column;
+  }
+  .float-badge small{color:var(--ink-soft);font-weight:500;font-size:.72rem}
+  .fb1{top:18px;left:-26px;animation:floaty 5s ease-in-out infinite}
+  .fb2{bottom:24px;right:-22px;animation:floaty 5s ease-in-out infinite .8s}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .fb1 b,.fb2 b{color:var(--accent);font-size:1.1rem}
+
+  /* ---------- STATS STRIP ---------- */
+  .stats{background:var(--ink);color:#f4ede2;padding:44px 24px}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .stat h3{font-family:var(--serif);font-size:2.4rem;color:var(--accent-soft);line-height:1}
+  .stat p{font-size:.85rem;color:#c9beae;margin-top:6px;letter-spacing:.04em}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--bg)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
+  .about-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+  .about-card h4{font-family:var(--serif);font-size:1.15rem;margin-bottom:14px}
+  .about p{color:var(--ink-soft);margin-bottom:16px}
+  .about p strong{color:var(--ink)}
+  .value-list{list-style:none;display:grid;gap:14px;margin-top:6px}
+  .value-list li{display:flex;gap:12px;align-items:flex-start;font-size:.94rem;color:var(--ink-soft)}
+  .value-list .ic{flex:0 0 34px;height:34px;border-radius:9px;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700}
+
+  /* ---------- SKILLS ---------- */
+  .skills{background:var(--bg-alt)}
+  .skill-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:44px}
+  .skill-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);transition:transform .25s}
+  .skill-card:hover{transform:translateY(-6px)}
+  .skill-card .ic{width:46px;height:46px;border-radius:12px;background:linear-gradient(145deg,var(--accent-soft),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px}
+  .skill-card h4{font-family:var(--serif);font-size:1.15rem;margin-bottom:14px}
+  .bar{margin-bottom:12px}
+  .bar .lab{display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:5px;color:var(--ink-soft)}
+  .track{height:7px;background:var(--bg-alt);border-radius:6px;overflow:hidden}
+  .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--accent-soft),var(--accent));width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+  .tag-cloud{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .tag{background:var(--card);border:1px solid var(--line);padding:8px 16px;border-radius:24px;font-size:.86rem;font-weight:500;color:var(--ink-soft);transition:.2s}
+  .tag:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+  /* ---------- PORTFOLIO ---------- */
+  .portfolio{background:var(--bg)}
+  .filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+  .filter{padding:8px 18px;border-radius:24px;border:1px solid var(--line);background:#fff;font-size:.88rem;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:.2s}
+  .filter.active,.filter:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.3s;cursor:pointer;opacity:0;transform:translateY(20px)}
+  .proj.show{opacity:1;transform:none}
+  .proj:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(90,60,30,.16)}
+  .proj .thumb{height:170px;display:flex;align-items:center;justify-content:center;font-size:2.6rem;color:#fff;position:relative}
+  .proj .thumb span.emoji{filter:drop-shadow(0 4px 10px rgba(0,0,0,.2))}
+  .t1{background:linear-gradient(135deg,#b5622f,#e8a06a)}
+  .t2{background:linear-gradient(135deg,#3a5a78,#6fa0c4)}
+  .t3{background:linear-gradient(135deg,#4a7a5a,#8fc49a)}
+  .t4{background:linear-gradient(135deg,#7a4a78,#c48fbf)}
+  .t5{background:linear-gradient(135deg,#78703a,#c9b96f)}
+  .t6{background:linear-gradient(135deg,#78463a,#c48f7f)}
+  .proj .body{padding:22px}
+  .proj .body .cat{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700}
+  .proj .body h4{font-family:var(--serif);font-size:1.22rem;margin:6px 0 10px}
+  .proj .body p{font-size:.9rem;color:var(--ink-soft);margin-bottom:14px}
+  .proj .stack{display:flex;flex-wrap:wrap;gap:6px}
+  .proj .stack span{background:var(--bg-alt);font-size:.72rem;padding:4px 10px;border-radius:20px;color:var(--ink-soft)}
+
+  /* ---------- EXPERIENCE ---------- */
+  .experience{background:var(--bg-alt)}
+  .timeline{position:relative;max-width:760px;margin:0 auto;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tl-item{position:relative;padding-bottom:38px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-34px;top:4px;width:18px;height:18px;border-radius:50%;background:var(--accent);border:4px solid var(--bg-alt);box-shadow:0 0 0 2px var(--accent)}
+  .tl-item .when{font-size:.78rem;font-weight:700;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+  .tl-item h4{font-family:var(--serif);font-size:1.22rem;margin:4px 0 2px}
+  .tl-item .org{font-size:.92rem;color:var(--ink-soft);margin-bottom:10px}
+  .tl-item p{font-size:.92rem;color:var(--ink-soft)}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--ink);color:#f4ede2;text-align:center}
+  .contact h2{color:#fff}
+  .contact .section-sub{color:#c9beae;margin:0 auto 40px}
+  .contact-methods{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
+  .cm{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:26px 34px;transition:.25s;min-width:200px}
+  .cm:hover{background:rgba(232,160,106,.14);transform:translateY(-4px);border-color:var(--accent-soft)}
+  .cm .ic{font-size:1.6rem;margin-bottom:10px}
+  .cm h4{font-size:1rem;margin-bottom:4px}
+  .cm p{color:#c9beae;font-size:.88rem;word-break:break-word}
+  .socials{display:flex;gap:16px;justify-content:center}
+  .socials a{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-weight:700;transition:.25s;font-size:.85rem}
+  .socials a:hover{background:var(--accent);transform:translateY(-3px)}
+
+  footer{background:#221d1a;color:#9c9188;text-align:center;padding:28px;font-size:.85rem}
+  footer .logo{color:#f4ede2;font-size:1.05rem;margin-bottom:6px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;text-align:center}
+    .hero .btn-row{justify-content:center}
+    .hero .avail{margin-left:auto;margin-right:auto}
+    .portrait{max-width:320px;margin:10px auto 0}
+    .about-grid{grid-template-columns:1fr;gap:32px}
+    .skill-cats{grid-template-columns:1fr}
+    .proj-grid{grid-template-columns:repeat(2,1fr)}
+    .stats-grid{grid-template-columns:repeat(2,1fr);gap:30px}
+  }
+  @media(max-width:640px){
+    section{padding:70px 20px}
+    nav.links{position:fixed;top:0;right:0;height:100vh;width:74%;max-width:300px;background:var(--bg);flex-direction:column;justify-content:center;gap:26px;transform:translateX(100%);transition:transform .35s;box-shadow:-10px 0 40px rgba(0,0,0,.12);padding:40px}
+    nav.links.open{transform:none}
+    .burger{display:flex;z-index:60}
+    .burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+    .proj-grid{grid-template-columns:1fr}
+    .fb1{left:0}.fb2{right:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="logo">Erica<span>.</span>J</div>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav class="links" id="links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#portfolio">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="avail"><span class="dot"></span> Open to relocation — London</div>
+      <h1>Hi, I'm Erica —<br>I build <span class="accent">trustworthy</span> AI systems.</h1>
+      <p class="lead">AI deployment engineer, adversarial ML researcher, and startup co-founder with 13+ years in production fintech engineering. I build, red-team, and evaluate LLM agents — from prototype to production.</p>
+      <div class="btn-row">
+        <a href="#portfolio" class="btn btn-primary">View my work →</a>
+        <a href="#contact" class="btn btn-ghost">Let's talk</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="portrait">
+        <div class="initials">EJ</div>
+        <div class="float-badge fb1"><b>13+ yrs</b><small>fintech engineering</small></div>
+        <div class="float-badge fb2"><b>PhD</b><small>adversarial ML</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><h3 data-count="13" data-suffix="+">0</h3><p>YEARS IN PRODUCTION ENGINEERING</p></div>
+    <div class="stat"><h3 data-count="2">0</h3><p>STARTUPS CO-FOUNDED</p></div>
+    <div class="stat"><h3 data-count="12">0</h3><p>AI CODE VULNERABILITY PATTERNS DETECTED</p></div>
+    <div class="stat"><h3 data-count="4">0</h3><p>STAGE ADVERSARIAL TESTING PIPELINE</p></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">About me</div>
+      <h2 class="section-title">A little about who I am</h2>
+      <p class="section-sub">Senior engineer, researcher, and startup co-founder — the short version below.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <h4>At a glance</h4>
+        <ul class="value-list">
+          <li><span class="ic">🎯</span><div><strong>Role</strong> — AI Deployment Engineer &amp; Adversarial ML Researcher</div></li>
+          <li><span class="ic">📍</span><div><strong>Location</strong> — Ragama, Sri Lanka (open to relocation — London)</div></li>
+          <li><span class="ic">💬</span><div><strong>Languages</strong> — English</div></li>
+          <li><span class="ic">☕</span><div><strong>Loves</strong> — red-teaming, agentic systems, mentoring at hackathons</div></li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <p>I'm a senior software engineer and technical co-founder with <strong>13+ years</strong> building production systems in fintech, and a PhD candidate in Adversarial Machine Learning. For the last two years I've been building, red-teaming, and evaluating LLM agents and multi-agent systems end-to-end — from prototype to production — including a formal LLM red-teaming framework mapped to the <strong>OWASP LLM Top 10</strong> and <strong>MITRE ATLAS</strong>.</p>
+        <p>I'm comfortable moving between hands-on prompt/agent iteration, evaluation design, and translating technical findings for both engineering and product audiences. I've co-founded two ventures, owning product, technical, and customer-facing decisions across both.</p>
+        <p>My research focus is adversarial robustness in ML systems, which directly informs my applied red-teaming and evaluation-design work. I also mentor and compete at AI security hackathons, most recently the AMD Developer Hackathon and IBM Bob Hackathon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">What I do</div>
+      <h2 class="section-title">Skills &amp; expertise</h2>
+      <p class="section-sub">A snapshot of the tools and areas I work in most.</p>
+    </div>
+    <div class="skill-cats">
+      <div class="skill-card reveal">
+        <div class="ic">💻</div>
+        <h4>Languages &amp; Data</h4>
+        <div class="bar"><div class="lab"><span>Python</span><span>92%</span></div><div class="track"><div class="fill" data-w="92"></div></div></div>
+        <div class="bar"><div class="lab"><span>SQL / NL2SQL</span><span>85%</span></div><div class="track"><div class="fill" data-w="85"></div></div></div>
+        <div class="bar"><div class="lab"><span>JavaScript / React</span><span>72%</span></div><div class="track"><div class="fill" data-w="72"></div></div></div>
+        <div class="bar"><div class="lab"><span>ML (XGBoost, LSTM, Transformers)</span><span>85%</span></div><div class="track"><div class="fill" data-w="85"></div></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="ic">🧩</div>
+        <h4>Agent &amp; AI Systems</h4>
+        <div class="bar"><div class="lab"><span>LLM agent &amp; multi-agent design</span><span>90%</span></div><div class="track"><div class="fill" data-w="90"></div></div></div>
+        <div class="bar"><div class="lab"><span>Prompt engineering &amp; tool-use</span><span>88%</span></div><div class="track"><div class="fill" data-w="88"></div></div></div>
+        <div class="bar"><div class="lab"><span>Multimodal / CLIP retrieval</span><span>78%</span></div><div class="track"><div class="fill" data-w="78"></div></div></div>
+        <div class="bar"><div class="lab"><span>Production deployment</span><span>85%</span></div><div class="track"><div class="fill" data-w="85"></div></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="ic">🛡️</div>
+        <h4>Red-Teaming &amp; Practices</h4>
+        <div class="bar"><div class="lab"><span>Adversarial robustness testing</span><span>95%</span></div><div class="track"><div class="fill" data-w="95"></div></div></div>
+        <div class="bar"><div class="lab"><span>OWASP LLM Top 10 / MITRE ATLAS eval design</span><span>92%</span></div><div class="track"><div class="fill" data-w="92"></div></div></div>
+        <div class="bar"><div class="lab"><span>System &amp; agent orchestration design</span><span>88%</span></div><div class="track"><div class="fill" data-w="88"></div></div></div>
+        <div class="bar"><div class="lab"><span>Cross-functional / startup leadership</span><span>90%</span></div><div class="track"><div class="fill" data-w="90"></div></div></div>
+      </div>
+    </div>
+    <div class="tag-cloud reveal">
+      <span class="tag">LLM Agents</span><span class="tag">Multi-Agent Systems</span><span class="tag">NL2SQL</span><span class="tag">Prompt Engineering</span>
+      <span class="tag">Adversarial ML</span><span class="tag">Red-Teaming</span><span class="tag">OWASP LLM Top 10</span><span class="tag">MITRE ATLAS</span>
+      <span class="tag">CLIP / Multimodal</span><span class="tag">XGBoost</span><span class="tag">React</span><span class="tag">Python</span>
+      <span class="tag">Fintech Systems</span><span class="tag">Vulnerability Scanning</span><span class="tag">GPS/Acoustic Spoofing Defense</span>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Selected work</div>
+      <h2 class="section-title">Portfolio</h2>
+      <p class="section-sub">Agent systems, red-teaming tools, and applied ML pipelines I've built and shipped.</p>
+    </div>
+    <div class="filter-row reveal">
+      <button class="filter active" data-f="all">All</button>
+      <button class="filter" data-f="agents">Agents</button>
+      <button class="filter" data-f="security">Security</button>
+      <button class="filter" data-f="research">Research</button>
+    </div>
+    <div class="proj-grid" id="projGrid">
+      <div class="proj" data-cat="agents">
+        <div class="thumb t1"><span class="emoji">🗃️</span></div>
+        <div class="body"><div class="cat">AI Agents</div><h4>MediCore</h4>
+          <p>A multi-agent NL2SQL platform enabling non-technical users to query structured data through natural language, with agent orchestration and query-verification layers.</p>
+          <div class="stack"><span>Python</span><span>LLM Agents</span><span>SQL</span></div></div>
+      </div>
+      <div class="proj" data-cat="agents">
+        <div class="thumb t2"><span class="emoji">🛍️</span></div>
+        <div class="body"><div class="cat">AI Agents</div><h4>E-Commerce Concierge Agent</h4>
+          <p>A multimodal, CLIP-based shopping concierge agent — iterated on retrieval quality and failure modes through direct usage testing.</p>
+          <div class="stack"><span>CLIP</span><span>Multimodal</span><span>Python</span></div></div>
+      </div>
+      <div class="proj" data-cat="security">
+        <div class="thumb t3"><span class="emoji">🛡️</span></div>
+        <div class="body"><div class="cat">Security</div><h4>LLM Red-Teaming Framework</h4>
+          <p>A formal red-teaming framework structured around the OWASP LLM Top 10 and MITRE ATLAS, implementing a four-stage adversarial testing pipeline with reproducible evaluation artifacts.</p>
+          <div class="stack"><span>OWASP LLM Top 10</span><span>MITRE ATLAS</span><span>Python</span></div></div>
+      </div>
+      <div class="proj" data-cat="security">
+        <div class="thumb t4"><span class="emoji">🔍</span></div>
+        <div class="body"><div class="cat">Security</div><h4>AI Code Vulnerability Scanner</h4>
+          <p>Detects 12 distinct vulnerability pattern types in AI-generated ("vibe-coded") applications, including a go-to-market and packaging strategy.</p>
+          <div class="stack"><span>Python</span><span>Static Analysis</span><span>Security</span></div></div>
+      </div>
+      <div class="proj" data-cat="research">
+        <div class="thumb t5"><span class="emoji">📡</span></div>
+        <div class="body"><div class="cat">Research</div><h4>Human-Wildlife Early Warning System</h4>
+          <p>An adversarial-robust early warning system with GPS spoofing and acoustic jamming defenses layered onto a real-time detection pipeline.</p>
+          <div class="stack"><span>GPS Spoofing Defense</span><span>Acoustic Sensing</span><span>Adversarial ML</span></div></div>
+      </div>
+      <div class="proj" data-cat="research">
+        <div class="thumb t6"><span class="emoji">🌾</span></div>
+        <div class="body"><div class="cat">Research</div><h4>Super El Niño Crop-Yield Pipeline</h4>
+          <p>An ensemble of XGBoost, LSTM, and Transformer models with Monte Carlo uncertainty estimation for crop-yield prediction.</p>
+          <div class="stack"><span>XGBoost</span><span>LSTM</span><span>Transformers</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">The journey</div>
+      <h2 class="section-title">Experience</h2>
+      <p class="section-sub">13+ years across fintech engineering, startups, and adversarial ML research.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="when">2024 — Present</div><h4>Co-Founder &amp; Senior Software Engineer</h4><div class="org">Mindview AI</div><p>Co-founded an applied-AI studio building agentic systems and evaluation tooling for high-stakes domains (finance, public health, climate/agriculture). Designed MediCore, a multi-agent NL2SQL platform, and a multimodal CLIP-based e-commerce concierge agent.</p></div>
+      <div class="tl-item reveal"><div class="when">2024 — Present</div><h4>Co-Founder</h4><div class="org">VibeSec</div><p>Founded an AI security practice focused on adversarial robustness and red-teaming of LLM-based and AI-generated applications. Built a formal LLM Red-Teaming Framework (OWASP LLM Top 10 / MITRE ATLAS) and a vulnerability scanner for AI-generated code, plus an incident report on a real-world npm supply-chain attack.</p></div>
+      <div class="tl-item reveal"><div class="when">Prior role</div><h4>Senior Software Engineer</h4><div class="org">National Savings Bank (NSB)</div><p>Delivered production fintech systems in a regulated banking environment across the full software lifecycle — architecture, implementation, testing, deployment — with rigor comparable to frontier-model deployment contexts.</p></div>
+      <div class="tl-item reveal"><div class="when">In progress</div><h4>PhD, Adversarial Machine Learning</h4><div class="org">Auckland University of Technology (AUT)</div><p>Research focus on adversarial robustness in ML systems, directly informing applied red-teaming and evaluation-design work across LLM and agentic systems.</p></div>
+      <div class="tl-item reveal"><div class="when">Education</div><h4>MSc, Artificial Intelligence</h4><div class="org">University of Moratuwa</div><p>Graduate studies in artificial intelligence, laying the foundation for later work in adversarial ML and agentic systems.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <div class="eyebrow">Get in touch</div>
+    <h2 class="section-title">Let's build something</h2>
+    <p class="section-sub">Have a role, a project, or just want to say hello? I'd love to hear from you.</p>
+    <div class="contact-methods">
+      <a class="cm" href="mailto:ericajayasundera@gmail.com"><div class="ic">✉️</div><h4>Email</h4><p>ericajayasundera@gmail.com</p></a>
+      <a class="cm" href="#"><div class="ic">💼</div><h4>LinkedIn</h4><p>Add your profile link</p></a>
+      <a class="cm" href="#"><div class="ic">🐙</div><h4>GitHub</h4><p>Add your GitHub link</p></a>
+      <a class="cm" href="#"><div class="ic">📍</div><h4>Location</h4><p>Ragama, Sri Lanka (open to London)</p></a>
+    </div>
+    <div class="socials">
+      <a href="mailto:ericajayasundera@gmail.com" title="Email">@</a>
+      <a href="#" title="LinkedIn">in</a>
+      <a href="#" title="GitHub">gh</a>
+      <a href="#" title="Twitter/X">X</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Erica<span style="color:var(--accent-soft)">.</span>J</div>
+  <div>© <span id="yr"></span> Erica Jayasundera — Built with care.</div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+
+  // mobile menu
+  const burger=document.getElementById('burger'), links=document.getElementById('links');
+  burger.addEventListener('click',()=>{burger.classList.toggle('open');links.classList.toggle('open')});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');links.classList.remove('open')}));
+
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // skill bars
+  const skillIO=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%');skillIO.unobserve(e.target)}})},{threshold:.4});
+  document.querySelectorAll('.skill-card').forEach(el=>skillIO.observe(el));
+
+  // count up
+  const countIO=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target,end=+el.dataset.count,suf=el.dataset.suffix||'';let n=0;const step=Math.max(1,Math.round(end/50));const t=setInterval(()=>{n+=step;if(n>=end){n=end;clearInterval(t)}el.textContent=n+suf},22);countIO.unobserve(el)}})},{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el));
+
+  // portfolio reveal + filter
+  const projs=document.querySelectorAll('.proj');
+  const showProjs=()=>projs.forEach((p,i)=>{if(getComputedStyle(p).display!=='none')setTimeout(()=>p.classList.add('show'),i*90)});
+  const pIO=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){showProjs();pIO.disconnect()}})},{threshold:.1});
+  pIO.observe(document.getElementById('projGrid'));
+  document.querySelectorAll('.filter').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f=btn.dataset.f;
+      projs.forEach(p=>{
+        const match=f==='all'||p.dataset.cat===f;
+        p.style.display=match?'':'none';
+        p.classList.remove('show');
+      });
+      requestAnimationFrame(showProjs);
+    });
+  });
+</script>
+</body>
+</html>
